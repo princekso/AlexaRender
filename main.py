@@ -320,27 +320,27 @@ async def fetch_youtube_link_backup(query):
         raise Exception(f"Backup Search API error: {e}")
 
 async def invite_assistant(chat_id, invite_link, processing_message):
-    """
-    Internally invite the assistant to the chat by using the assistant client to join the chat.
-    If already joined, skip. Else show error if any.
-    """
-    try:
-        # Check if assistant is already a member
-        member = await assistant.get_chat_member(chat_id, assistant.me.id)
-        if member.status in ["member", "administrator", "creator"]:
-            return True
-    except Exception:
-        pass  # not a member, will try to join
+    """
+    Internally invite the assistant to the chat by using the assistant client to join the chat.
+    If already joined, skip. Else show error if any.
+    """
+    try:
+        # Check if assistant is already a member
+        member = await assistant.get_chat_member(chat_id, assistant.me.id)
+        if member.status in ["member", "administrator", "creator"]:
+            return True
+    except Exception:
+        pass  # not a member, will try to join
 
-    try:
-        await assistant.join_chat(invite_link)
-        return True
-    except UserAlreadyParticipant:
-        return True  # already joined
-    except Exception as e:
-        error_message = f"❌ Error while inviting assistant: {str(e)}"
-        await processing_message.edit(error_message)
-        return False
+    try:
+        await assistant.join_chat(invite_link)
+        return True
+    except UserAlreadyParticipant:
+        return True  # already joined
+    except Exception as e:
+        error_message = f"❌ Error while inviting assistant: {str(e)}"
+        await processing_message.edit(error_message)
+        return False
 
 
 
