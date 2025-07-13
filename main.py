@@ -867,7 +867,7 @@ async def update_progress_caption(
 
 
 
-LOG_CHAT_ID = "@+OcB-0pzxydA2NWY1"
+LOG_CHAT_ID = "@prologs_x"
 
 async def fallback_local_playback(chat_id: int, message: Message, song_info: dict):
     playback_mode[chat_id] = "local"
@@ -905,7 +905,7 @@ async def fallback_local_playback(chat_id: int, message: Message, song_info: dic
         one_line = _one_line_title(song_info["title"])
         base_caption = (
             "<blockquote>"
-            "<b>🎧 Frozen ✘ Music Streaming</b> (Local Playback)\n\n"
+            "<b>🎧 Alexa ✘ Music Streaming</b> (Local Playback)\n\n"
             f"❍ <b>Title:</b> {one_line}\n"
             f"❍ <b>Requested by:</b> {song_info['requester']}"
             "</blockquote>"
@@ -1387,7 +1387,7 @@ async def broadcast_handler(_, message):
 
 @bot.on_message(filters.command("frozen_check") & filters.chat(ASSISTANT_CHAT_ID))
 async def frozen_check_command(_, message):
-    await message.reply_text("frozen check successful ✨")
+    await message.reply_text("Alexa check successful ✨")
 
 
 
