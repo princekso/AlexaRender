@@ -18,6 +18,7 @@ from urllib.parse import quote, urljoin
 import aiohttp
 import aiofiles
 import asyncio
+from pyrogram.errors import UserAlreadyParticipant
 import requests
 import isodate
 import psutil
@@ -317,10 +318,6 @@ async def fetch_youtube_link_backup(query):
                 )
     except Exception as e:
         raise Exception(f"Backup Search API error: {e}")
-
-
-    
-from pyrogram.errors import UserAlreadyParticipant
 
 async def invite_assistant(chat_id, invite_link, processing_message):
     """
